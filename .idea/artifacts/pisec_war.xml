@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="pisec:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="pisec.war">
+      <element id="artifact" artifact-name="pisec:war exploded" />
+    </root>
+  </artifact>
+</component>
