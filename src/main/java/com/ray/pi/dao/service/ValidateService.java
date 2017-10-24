@@ -7,7 +7,5 @@ import com.ray.pi.dao.entity.TfBUser;
  */
 public interface ValidateService {
 
-	public void userLogin(Integer userId);
-
-	public TfBUser queryUserInfo(Integer userId);
+	public TfBUser queryUserInfo(Long userId);
 }
