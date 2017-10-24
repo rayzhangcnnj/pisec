@@ -32,6 +32,11 @@ public class TfBHeadImage extends StringAndEqualsObject implements Serializable 
     private String md5;
 
     /**
+     * @Fields tf_b_head_image.path :头像路径
+     */
+    private String path;
+
+    /**
      * @Fields tf_b_head_image.create_id :创建人
      */
     private String createId;
@@ -81,6 +86,20 @@ public class TfBHeadImage extends StringAndEqualsObject implements Serializable 
      */
     public void setMd5(String md5) {
         this.md5 = md5 == null ? null : md5.trim();
+    }
+
+    /**
+     * @return tf_b_head_image.path : 返回 头像路径
+     */
+    public String getPath() {
+        return path;
+    }
+
+    /**
+     * @param path of tf_b_head_image : 设置 头像路径
+     */
+    public void setPath(String path) {
+        this.path = path == null ? null : path.trim();
     }
 
     /**

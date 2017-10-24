@@ -365,6 +365,11 @@
       <artifactId>aip</artifactId>
       <version>3.2.1</version>
     </dependency>
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20160810</version>
+    </dependency>
 
     <!-- <dependency>
          <groupId>joda-time</groupId>

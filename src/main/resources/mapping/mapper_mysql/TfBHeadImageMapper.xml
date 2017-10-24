@@ -5,11 +5,12 @@
     <id column="image_id" property="imageId" jdbcType="BIGINT" />
     <result column="user_id" property="userId" jdbcType="BIGINT" />
     <result column="md5" property="md5" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
     <result column="create_id" property="createId" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    image_id, user_id, md5, create_id, create_time
+    image_id, user_id, md5, path, create_id, create_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -33,6 +34,9 @@
       <if test="md5 != null" >
         md5,
       </if>
+      <if test="path != null" >
+        path,
+      </if>
       <if test="createId != null" >
         create_id,
       </if>
@@ -49,6 +53,9 @@
       </if>
       <if test="md5 != null" >
         #{md5,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
       </if>
       <if test="createId != null" >
         #{createId,jdbcType=VARCHAR},
@@ -67,6 +74,9 @@
       <if test="md5 != null" >
         md5 = #{md5,jdbcType=VARCHAR},
       </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
       <if test="createId != null" >
         create_id = #{createId,jdbcType=VARCHAR},
       </if>
@@ -80,6 +90,7 @@
     update tf_b_head_image
     set user_id = #{userId,jdbcType=BIGINT},
       md5 = #{md5,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
       create_id = #{createId,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where image_id = #{imageId,jdbcType=BIGINT}

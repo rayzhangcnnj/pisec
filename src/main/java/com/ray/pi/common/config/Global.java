@@ -127,6 +127,7 @@ public class Global {
 		} catch (Exception e) {
 			// 异常代表无配置，这里什么也不做
 		}
+
 		return null;
 	}
 

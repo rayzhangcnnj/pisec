@@ -22,6 +22,11 @@ public abstract class TTfBHeadImage {
     public static final String MD5 = "md5";
 
     /**
+     * @Fields tf_b_head_image.PATH: 头像路径
+     */
+    public static final String PATH = "path";
+
+    /**
      * @Fields tf_b_head_image.CREATE_ID: 创建人
      */
     public static final String CREATE_ID = "create_id";

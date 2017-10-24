@@ -27,6 +27,16 @@ public class TfBUser extends StringAndEqualsObject implements Serializable {
     private String userName;
 
     /**
+     * @Fields tf_b_user.last_drive_start_time :最近驾驶开始时间
+     */
+    private Date lastDriveStartTime;
+
+    /**
+     * @Fields tf_b_user.last_drive_end_time :最近驾驶结束时间
+     */
+    private Date lastDriveEndTime;
+
+    /**
      * @Fields tf_b_user.create_id :创建人
      */
     private String createId;
@@ -62,6 +72,34 @@ public class TfBUser extends StringAndEqualsObject implements Serializable {
      */
     public void setUserName(String userName) {
         this.userName = userName == null ? null : userName.trim();
+    }
+
+    /**
+     * @return tf_b_user.last_drive_start_time : 返回 最近驾驶开始时间
+     */
+    public Date getLastDriveStartTime() {
+        return lastDriveStartTime;
+    }
+
+    /**
+     * @param lastDriveStartTime of tf_b_user : 设置 最近驾驶开始时间
+     */
+    public void setLastDriveStartTime(Date lastDriveStartTime) {
+        this.lastDriveStartTime = lastDriveStartTime;
+    }
+
+    /**
+     * @return tf_b_user.last_drive_end_time : 返回 最近驾驶结束时间
+     */
+    public Date getLastDriveEndTime() {
+        return lastDriveEndTime;
+    }
+
+    /**
+     * @param lastDriveEndTime of tf_b_user : 设置 最近驾驶结束时间
+     */
+    public void setLastDriveEndTime(Date lastDriveEndTime) {
+        this.lastDriveEndTime = lastDriveEndTime;
     }
 
     /**

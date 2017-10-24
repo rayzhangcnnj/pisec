@@ -4,11 +4,13 @@
   <resultMap id="BaseResultMap" type="com.ray.pi.dao.entity.TfBUser" >
     <id column="user_id" property="userId" jdbcType="BIGINT" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="last_drive_start_time" property="lastDriveStartTime" jdbcType="TIMESTAMP" />
+    <result column="last_drive_end_time" property="lastDriveEndTime" jdbcType="TIMESTAMP" />
     <result column="create_id" property="createId" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    user_id, user_name, create_id, create_time
+    user_id, user_name, last_drive_start_time, last_drive_end_time, create_id, create_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -29,6 +31,12 @@
       <if test="userName != null" >
         user_name,
       </if>
+      <if test="lastDriveStartTime != null" >
+        last_drive_start_time,
+      </if>
+      <if test="lastDriveEndTime != null" >
+        last_drive_end_time,
+      </if>
       <if test="createId != null" >
         create_id,
       </if>
@@ -42,6 +50,12 @@
       </if>
       <if test="userName != null" >
         #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastDriveStartTime != null" >
+        #{lastDriveStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastDriveEndTime != null" >
+        #{lastDriveEndTime,jdbcType=TIMESTAMP},
       </if>
       <if test="createId != null" >
         #{createId,jdbcType=VARCHAR},
@@ -57,6 +71,12 @@
       <if test="userName != null" >
         user_name = #{userName,jdbcType=VARCHAR},
       </if>
+      <if test="lastDriveStartTime != null" >
+        last_drive_start_time = #{lastDriveStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastDriveEndTime != null" >
+        last_drive_end_time = #{lastDriveEndTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="createId != null" >
         create_id = #{createId,jdbcType=VARCHAR},
       </if>
@@ -69,6 +89,8 @@
   <update id="updateByPrimaryKey" parameterType="com.ray.pi.dao.entity.TfBUser" >
     update tf_b_user
     set user_name = #{userName,jdbcType=VARCHAR},
+      last_drive_start_time = #{lastDriveStartTime,jdbcType=TIMESTAMP},
+      last_drive_end_time = #{lastDriveEndTime,jdbcType=TIMESTAMP},
       create_id = #{createId,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where user_id = #{userId,jdbcType=BIGINT}
