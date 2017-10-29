@@ -74,7 +74,7 @@
 	<!-- scan mappers and let them be autowired -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-		<property name="basePackage" value="com.im.uip.dao.persistence" />
+		<property name="basePackage" value="com.ray.pi.dao.persistence" />
 	</bean>
 
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">

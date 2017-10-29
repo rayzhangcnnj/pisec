@@ -65,7 +65,9 @@
           <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.5" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.26" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../maven/maven-repository/com/pi4j/pi4j-core/1.2-SNAPSHOT/pi4j-core-1.2-20170907.193313-36.jar" output-file-name="pi4j-core-1.2-SNAPSHOT.jar" />
           <element id="library" level="project" name="Maven: com.baidu:aip:3.2.1" />
+          <element id="library" level="project" name="Maven: org.json:json:20160810" />
         </element>
       </element>
       <element id="directory" name="META-INF">

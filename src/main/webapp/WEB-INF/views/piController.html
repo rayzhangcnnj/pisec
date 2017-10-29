@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <object th:include="_includes/_meta :: headerFragment" th:remove="tag"/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>UIP策略详情</title>
+</head>
+<body>
+<div>
+    <div><h3>LED灯控制</h3></div>
+    <div>
+        <input type="button" onclick="flash();" value="闪烁"/>
+    </div>
+
+    <div>===========================</div>
+
+    <div><h3>LED灯控制2</h3></div>
+    <div>
+        <input type="button" onclick="flash2();" value="闪烁2"/>
+    </div>
+</div>
+
+<script>
+    $(function () {
+
+    });
+
+    function flash() {
+        $.ajax({
+            url: '/pisec/testGpio',
+            type: 'post',
+            async: true,
+            data : {
+
+            },
+            dataType : 'json',
+            success: function(data, status) {
+                if(data.result=='success'){
+                    alert("开始")
+                }
+            },
+            error: function(data, status){
+            }
+        })
+    }
+
+    function flash2() {
+        $.ajax({
+            url: '/pisec/testGpio2',
+            type: 'post',
+            async: true,
+            data : {
+
+            },
+            dataType : 'json',
+            success: function(data, status) {
+                if(data.result=='success'){
+                    alert("开始")
+                }
+            },
+            error: function(data, status){
+            }
+        })
+    }
+</script>
+</body>
+</html>

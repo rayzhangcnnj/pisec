@@ -9,8 +9,8 @@
         <module name="pisec" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="pisec" target="1.5" />
+    <bytecodeTargetLevel target="1.7">
+      <module name="pisec" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

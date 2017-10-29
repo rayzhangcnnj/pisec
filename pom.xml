@@ -292,6 +292,12 @@
       <groupId>nz.net.ultraq.thymeleaf</groupId>
       <artifactId>thymeleaf-layout-dialect</artifactId>
       <version>${thymeleaf.layout.version}</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>thymeleaf</artifactId>
+          <groupId>org.thymeleaf</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <!-- Thymeleaf END -->
 
@@ -388,7 +394,28 @@
       <version>3.3.2</version>
     </dependency>
   </dependencies>
+  <repositories>
+    <repository>
+      <id>oss-snapshots-repo</id>
+      <name>Sonatype OSS Maven Repository</name>
+      <url>https://oss.sonatype.org/content/groups/public</url>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+    </repository>
+  </repositories>
   <build>
     <finalName>pisec</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
