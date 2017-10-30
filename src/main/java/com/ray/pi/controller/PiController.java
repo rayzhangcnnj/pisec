@@ -3,6 +3,7 @@ package com.ray.pi.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
 import com.ray.pi.dao.service.ValidateService;
+import com.ray.pi.gpio.CarUtil;
 import com.ray.pi.gpio.GpioUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,14 +65,13 @@ public class PiController {
 	public JSONObject carController(HttpServletRequest request) {
 		JSONObject json = new JSONObject();
 
-		//GpioUnit gpio = GpioUnit.getInstance();
+		GpioUnit gpio = GpioUnit.getInstance();
 
 		String distance = request.getParameter("distance");
 		try {
-//			GpioPinDigitalOutput[] pin = gpio.getCAR();
-//			run = 0;
-//
-//			CarUtil.car(distance, pin);
+			GpioPinDigitalOutput[] pin = gpio.getCAR();
+
+			CarUtil.car(distance, pin);
 
 
 		} catch (Exception e) {
