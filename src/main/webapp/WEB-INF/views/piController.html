@@ -13,11 +13,22 @@
         <input type="button" onclick="flash();" value="闪烁"/>
     </div>
 
+    <!--<div>===========================</div>-->
+
+    <!--<div><h3>LED灯控制2</h3></div>-->
+    <!--<div>-->
+        <!--<input type="button" onclick="flash2();" value="闪烁2"/>-->
+    <!--</div>-->
+
     <div>===========================</div>
 
-    <div><h3>LED灯控制2</h3></div>
+    <div><h3>小车控制</h3></div>
     <div>
-        <input type="button" onclick="flash2();" value="闪烁2"/>
+        <input type="button" onclick="turn('L');" value="左转"/>
+        <input type="button" onclick="turn('R');" value="右转"/>
+        <input type="button" onclick="turn('F');" value="向前"/>
+        <input type="button" onclick="turn('B');" value="向后"/>
+        <input type="button" onclick="turn('S');" value="停止"/>
     </div>
 </div>
 
@@ -45,24 +56,26 @@
         })
     }
 
-    function flash2() {
+    function turn(distance) {
         $.ajax({
-            url: '/pisec/testGpio2',
+            url: '/pisec/carController',
             type: 'post',
             async: true,
             data : {
-
+                distance:distance
             },
             dataType : 'json',
             success: function(data, status) {
-                if(data.result=='success'){
-                    alert("开始")
+                if(data.resultCode=='success'){
+                    alert(data.resultMap.distance);
                 }
             },
             error: function(data, status){
+                alert("error")
             }
         })
     }
+
 </script>
 </body>
 </html>

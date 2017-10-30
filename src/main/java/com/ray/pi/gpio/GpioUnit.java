@@ -12,13 +12,9 @@ import java.util.Map;
 public class GpioUnit {
 
 	private static final GpioController gpio;
-//	private static final GpioPinDigitalMultipurpose GPIO_00;
 	private static final GpioPinDigitalOutput GPIO_00;
-//	private static final GpioPinDigitalMultipurpose GPIO_01;
-//	private static final GpioPinDigitalMultipurpose GPIO_02;
-//	private static final GpioPinDigitalMultipurpose GPIO_03;
-//	private static final GpioPinDigitalMultipurpose GPIO_04;
-//	private static final GpioPinDigitalMultipurpose GPIO_05;
+	private static final GpioPinDigitalOutput[] CAR;
+	private static final GpioPinDigitalMultipurpose GPIO_01;
 //	private static final GpioPinDigitalMultipurpose GPIO_06;
 //	private static final GpioPinDigitalMultipurpose GPIO_07;
 //	private static final GpioPinDigitalMultipurpose GPIO_08;
@@ -32,14 +28,20 @@ public class GpioUnit {
 //	private static final GpioPinDigitalMultipurpose GPIO_16;
 
 	private static final Map<String, GpioPinDigitalOutput> gpioMap;
+	private static final Map<String, GpioPinDigitalOutput[]> carMap;
 
 	static {
 		gpio = GpioFactory.getInstance();
 		gpioMap = new HashMap<>();
-//		GPIO_00 = gpio.provisionDigitalMultipurposePin(RaspiPin.GPIO_00, "GPIO_00", PinMode.DIGITAL_OUTPUT);
-		GPIO_00 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00,"GPIO_00",PinState.LOW);
+		carMap = new HashMap<>();
 
-//		GPIO_01 = gpio.provisionDigitalMultipurposePin(RaspiPin.GPIO_01, "GPIO_01", PinMode.DIGITAL_OUTPUT);
+		GPIO_00 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00,"GPIO_00",PinState.LOW);
+		CAR = new GpioPinDigitalOutput[]{
+				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, PinState.LOW),
+				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, PinState.LOW),
+				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, PinState.LOW),
+				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05, PinState.LOW)};
+		GPIO_01 = gpio.provisionDigitalMultipurposePin(RaspiPin.GPIO_01, "GPIO_01", PinMode.DIGITAL_OUTPUT);
 //		GPIO_02 = gpio.provisionDigitalMultipurposePin(RaspiPin.GPIO_02, "GPIO_02", PinMode.DIGITAL_OUTPUT);
 //		GPIO_03 = gpio.provisionDigitalMultipurposePin(RaspiPin.GPIO_03, "GPIO_03", PinMode.DIGITAL_OUTPUT);
 //		GPIO_04 = gpio.provisionDigitalMultipurposePin(RaspiPin.GPIO_04, "GPIO_04", PinMode.DIGITAL_OUTPUT);
@@ -70,6 +72,7 @@ public class GpioUnit {
 //        GPIO_29 = gpio.provisionDigitalMultipurposePin(RaspiPin.GPIO_29, "GPIO_29", PinMode.DIGITAL_OUTPUT);
 
 		gpioMap.put("GPIO_00", GPIO_00);
+		carMap.put("CAR", CAR);
 //		gpioMap.put("GPIO_01", GPIO_01);
 //		gpioMap.put("GPIO_02", GPIO_02);
 //		gpioMap.put("GPIO_03", GPIO_03);
@@ -138,5 +141,13 @@ public class GpioUnit {
 	 */
 	public Map<String, GpioPinDigitalOutput> getGpioMap() {
 		return this.gpioMap;
+	}
+
+	/**
+	 * 获取车辆控制
+	 * @return
+	 */
+	public GpioPinDigitalOutput[] getCAR() {
+		return CAR;
 	}
 }

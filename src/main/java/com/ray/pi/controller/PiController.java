@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Ray on 2017/10/22.
  */
@@ -33,15 +37,10 @@ public class PiController {
 
 		GpioUnit gpio = GpioUnit.getInstance();
 
-//		validateService.queryUserInfo();
-
 		try {
-
-//			GpioPinDigitalOutput myLed = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00, "", PinState.LOW);
 			GpioPinDigitalOutput myLed = gpio.getGpioPinDigitalOutput("GPIO_00");
 			int i = 0;
-			while (i < 10) {
-
+			while (i < 3) {
 				myLed.high();
 				Thread.sleep(500);
 				myLed.low();
@@ -49,9 +48,7 @@ public class PiController {
 				i++;
 				System.out.println("No." + i);
 			}
-
 			System.out.println("End");
-
 //			gpio.shutdown();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -61,5 +58,33 @@ public class PiController {
 		return json;
 
 	}
+
+	@RequestMapping(value = "/carController", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public JSONObject carController(HttpServletRequest request) {
+		JSONObject json = new JSONObject();
+
+		//GpioUnit gpio = GpioUnit.getInstance();
+
+		String distance = request.getParameter("distance");
+		try {
+//			GpioPinDigitalOutput[] pin = gpio.getCAR();
+//			run = 0;
+//
+//			CarUtil.car(distance, pin);
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		Map<String, Object> resultMap = new HashMap<>();
+		resultMap.put("distance", distance);
+
+		json.put("resultCode", "success");
+		json.put("resultMap", resultMap);
+		return json;
+	}
+
 
 }
