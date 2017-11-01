@@ -11,15 +11,19 @@ public class CarUtil {
 
 	public static void car(String distance, GpioPinDigitalOutput[] pin){
 		if("F".equals(distance)){
+			stop(pin);
 			forward(pin);
 		}
 		else if("B".equals(distance)){
+			stop(pin);
 			backward(pin);
 		}
 		else if("L".equals(distance)){
+			stop(pin);
 			turn_left(pin);
 		}
 		else if("R".equals(distance)){
+			stop(pin);
 			turn_right(pin);
 		}
 		else if("S".equals(distance)){

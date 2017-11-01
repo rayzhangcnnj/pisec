@@ -26,4 +26,5 @@
 	<context:annotation-config/>
 	<!-- 导入Spring配置文件 -->
 	<import resource="applicationContext-dataSource.xml" />
+	<import resource="applicationContext-bean.xml"/>
 </beans>

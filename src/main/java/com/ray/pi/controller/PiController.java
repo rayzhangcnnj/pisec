@@ -86,5 +86,15 @@ public class PiController {
 		return json;
 	}
 
+	@RequestMapping(value = "/addUser", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public JSONObject addUser(HttpServletRequest request) {
+		return validateService.facesetAddUser();
+	}
 
+	@RequestMapping(value = "/validateUser", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public JSONObject validateUser(HttpServletRequest request) {
+		return validateService.validateUser();
+	}
 }

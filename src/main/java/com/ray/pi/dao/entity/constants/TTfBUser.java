@@ -27,6 +27,11 @@ public abstract class TTfBUser {
     public static final String LAST_DRIVE_END_TIME = "last_drive_end_time";
 
     /**
+     * @Fields tf_b_user.DRIVE_STATE: 当前驾驶状态
+     */
+    public static final String DRIVE_STATE = "drive_state";
+
+    /**
      * @Fields tf_b_user.CREATE_ID: 创建人
      */
     public static final String CREATE_ID = "create_id";

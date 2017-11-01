@@ -47,4 +47,5 @@ public interface TfBHeadImageMapper {
     * @return int 更新记录数
      */
     int updateByPrimaryKey(TfBHeadImage record);
+
 }

@@ -30,6 +30,20 @@
         <input type="button" onclick="turn('B');" value="向后"/>
         <input type="button" onclick="turn('S');" value="停止"/>
     </div>
+
+    <div>===========================</div>
+
+    <div><h3>用户注册</h3></div>
+    <div>
+        <input type="button" onclick="addUser();" value="模拟注册"/>
+    </div>
+
+    <div>===========================</div>
+
+    <div><h3>用户验证</h3></div>
+    <div>
+        <input type="button" onclick="validateUser();" value="模拟验证"/>
+    </div>
 </div>
 
 <script>
@@ -75,6 +89,50 @@
             }
         })
     }
+
+    function addUser() {
+        $.ajax({
+            url: '/pisec/addUser',
+            type: 'post',
+            async: true,
+            data : {
+
+            },
+            dataType : 'json',
+            success: function(data, status) {
+                if(data.resultCode=='success'){
+                    alert("用户注册成功");
+                }
+            },
+            error: function(data, status){
+                alert("error")
+            }
+        })
+    }
+
+    function validateUser() {
+        $.ajax({
+            url: '/pisec/validateUser',
+            type: 'post',
+            async: true,
+            data : {
+
+            },
+            dataType : 'json',
+            success: function(data, status) {
+                if(data.resultCode=='success'){
+                    alert(data.resultMap.userName+"你好！欢迎使用智能驾驶系统！");
+                }
+                if(data.resultCode=='error'){
+                    alert(data.resultMsg);
+                }
+            },
+            error: function(data, status){
+                alert("error")
+            }
+        })
+    }
+
 
 </script>
 </body>

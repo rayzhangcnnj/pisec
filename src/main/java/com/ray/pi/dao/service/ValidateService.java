@@ -1,5 +1,6 @@
 package com.ray.pi.dao.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.ray.pi.dao.entity.TfBUser;
 
 /**
@@ -8,4 +9,10 @@ import com.ray.pi.dao.entity.TfBUser;
 public interface ValidateService {
 
 	public TfBUser queryUserInfo(Long userId);
+
+	public JSONObject facesetAddUser();
+
+	public JSONObject validateUser();
+
+	public void engineStop();
 }

@@ -4,6 +4,7 @@ import com.baidu.aip.face.AipFace;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -60,5 +61,58 @@ public class AipFaceClient {
 		pathArray.add(imagePath2);
 		JSONObject response = this.client.match(pathArray, new HashMap<String, String>());
 		return response;
+	}
+
+	/**
+	 * 人脸比对(分组比对)
+	 * @param pathArray
+	 * @return {"result":[{"index_j":"1","index_i":"0","score":96.428985595703}],"result_num":1,"log_id":2853252054102415}
+	 */
+	public JSONObject faceRecognize(ArrayList<String> pathArray) {
+		JSONObject response = this.client.match(pathArray, new HashMap<String, String>());
+		return response;
+	}
+
+	/**
+	 * 人脸注册
+	 * @param path
+	 * @param userId
+	 * @param userName
+	 * @param group
+	 * @return // 注册成功 {"log_id": 73473737,}
+	 *         // 注册发生错误 {"error_code": 216616,	"log_id": 674786177,"error_msg": "image exist"}
+	 */
+	public JSONObject facesetAddUser(String path, String userId, String userName, String group) {
+		// 参数为本地图片路径
+		HashMap<String, String> options = new HashMap<String, String>();
+		JSONObject res = this.client.addUser("uid_"+userId, userName, Arrays.asList(group), path, options);
+		//System.out.println(res.toString(2));
+		return res;
+	}
+
+	/**
+	 * 人脸识别
+	 * @param path
+	 * @param group
+	 * @return {"log_id": 73473737,"result_num":1,"result": [{"group_id" : "test1","uid": "u333333","user_info": "Test User","scores": [99.3,83.4]}]}
+	 */
+	public JSONObject identifyUser(String path, String group) {
+		HashMap<String, Object> options = new HashMap<String, Object>(1);
+		options.put("user_top_num", 1);
+		JSONObject res = this.client.identifyUser(Arrays.asList(group), path, options);
+		//System.out.println(res.toString(2));
+		return res;
+	}
+
+	/**
+	 * 人脸删除
+	 * @param uid
+	 * @param group
+	 * @return
+	 */
+	public JSONObject deleteUser(String uid, String group) {
+		JSONObject res = client.deleteUser(uid, Arrays.asList(group));
+//		System.out.println(res.toString(2));
+		return res;
 	}
 }

@@ -68,6 +68,7 @@
           <element id="file-copy" path="$PROJECT_DIR$/../../maven/maven-repository/com/pi4j/pi4j-core/1.2-SNAPSHOT/pi4j-core-1.2-20170907.193313-36.jar" output-file-name="pi4j-core-1.2-SNAPSHOT.jar" />
           <element id="library" level="project" name="Maven: com.baidu:aip:3.2.1" />
           <element id="library" level="project" name="Maven: org.json:json:20160810" />
+          <element id="library" level="project" name="Maven: javazoom:jlayer:1.0.1" />
           <element id="library" level="project" name="Maven: javax.servlet:javax.servlet:3.0.0.v201103241009" />
         </element>
       </element>

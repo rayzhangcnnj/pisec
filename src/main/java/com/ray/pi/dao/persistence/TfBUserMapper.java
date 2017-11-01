@@ -47,4 +47,6 @@ public interface TfBUserMapper {
     * @return int 更新记录数
      */
     int updateByPrimaryKey(TfBUser record);
+
+    int updateDrivingUser(TfBUser record);
 }

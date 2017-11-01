@@ -441,6 +441,11 @@
       <artifactId>json</artifactId>
       <version>20160810</version>
     </dependency>
+    <dependency>
+      <groupId>javazoom</groupId>
+      <artifactId>jlayer</artifactId>
+      <version>1.0.1</version>
+    </dependency>
 
     <!-- <dependency>
          <groupId>joda-time</groupId>
@@ -459,17 +464,17 @@
       <version>3.0.0.v201103241009</version>
     </dependency>
   </dependencies>
-  <repositories>
-    <repository>
-      <id>oss-snapshots-repo</id>
-      <name>Sonatype OSS Maven Repository</name>
-      <url>https://oss.sonatype.org/content/groups/public</url>
-      <snapshots>
-        <enabled>true</enabled>
-        <updatePolicy>always</updatePolicy>
-      </snapshots>
-    </repository>
-  </repositories>
+  <!--<repositories>-->
+    <!--<repository>-->
+      <!--<id>oss-snapshots-repo</id>-->
+      <!--<name>Sonatype OSS Maven Repository</name>-->
+      <!--<url>https://oss.sonatype.org/content/groups/public</url>-->
+      <!--<snapshots>-->
+        <!--<enabled>true</enabled>-->
+        <!--<updatePolicy>always</updatePolicy>-->
+      <!--</snapshots>-->
+    <!--</repository>-->
+  <!--</repositories>-->
   <build>
     <finalName>pisec</finalName>
     <plugins>
