@@ -117,4 +117,11 @@
     drive_state = '0'
     where drive_state = '1'
   </update>
+  <select id="selectDrivingOvertime" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+     from tf_b_user
+      where drive_state = '1'
+      and DATE_ADD(last_drive_start_time,INTERVAL 2 hour) &lt; CURRENT_TIME()
+  </select>
 </mapper>

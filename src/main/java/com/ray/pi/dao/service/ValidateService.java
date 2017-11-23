@@ -3,16 +3,29 @@ package com.ray.pi.dao.service;
 import com.alibaba.fastjson.JSONObject;
 import com.ray.pi.dao.entity.TfBUser;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by Ray on 2017/10/24.
  */
 public interface ValidateService {
 
-	public TfBUser queryUserInfo(Long userId);
+	TfBUser queryUserInfo(Long userId);
 
-	public JSONObject facesetAddUser();
+	JSONObject facesetAddUser(HttpSession session, HttpServletRequest request);
 
-	public JSONObject validateUser();
+	JSONObject validateUser(HttpSession session);
 
-	public void engineStop();
+	JSONObject editUser(HttpSession session, HttpServletRequest request);
+
+	void drivingRemind();
+
+	void engineStop();
+
+	String buildMp3File(String path, String text, String userId, String type);
+
+	JSONObject takePhoto(HttpSession session);
+
+	void alcoholWarning();
 }

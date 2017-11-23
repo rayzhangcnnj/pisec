@@ -91,6 +91,20 @@ public class AipFaceClient {
 	}
 
 	/**
+	 * 用户信息修改
+	 * @param path
+	 * @param userId
+	 * @param userName
+	 * @param group
+	 * @return
+	 */
+	public JSONObject editUser(String path, String userId, String userName, String group) {
+		HashMap<String, String> options = new HashMap<String, String>(1);
+		JSONObject res = this.client.updateUser("uid" + userId, userName, group, path, options);
+		return res;
+	}
+
+	/**
 	 * 人脸识别
 	 * @param path
 	 * @param group

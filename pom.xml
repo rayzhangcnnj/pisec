@@ -464,17 +464,17 @@
       <version>3.0.0.v201103241009</version>
     </dependency>
   </dependencies>
-  <!--<repositories>-->
-    <!--<repository>-->
-      <!--<id>oss-snapshots-repo</id>-->
-      <!--<name>Sonatype OSS Maven Repository</name>-->
-      <!--<url>https://oss.sonatype.org/content/groups/public</url>-->
-      <!--<snapshots>-->
-        <!--<enabled>true</enabled>-->
-        <!--<updatePolicy>always</updatePolicy>-->
-      <!--</snapshots>-->
-    <!--</repository>-->
-  <!--</repositories>-->
+  <repositories>
+    <repository>
+      <id>oss-snapshots-repo</id>
+      <name>Sonatype OSS Maven Repository</name>
+      <url>https://oss.sonatype.org/content/groups/public</url>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+    </repository>
+  </repositories>
   <build>
     <finalName>pisec</finalName>
     <plugins>
@@ -482,8 +482,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
     </plugins>

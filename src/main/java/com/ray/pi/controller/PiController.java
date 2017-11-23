@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -88,13 +89,25 @@ public class PiController {
 
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
 	@ResponseBody
-	public JSONObject addUser(HttpServletRequest request) {
-		return validateService.facesetAddUser();
+	public JSONObject addUser(HttpSession session, HttpServletRequest request) {
+		return validateService.facesetAddUser(session, request);
 	}
 
 	@RequestMapping(value = "/validateUser", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
 	@ResponseBody
-	public JSONObject validateUser(HttpServletRequest request) {
-		return validateService.validateUser();
+	public JSONObject validateUser(HttpSession session) {
+		return validateService.validateUser(session);
+	}
+
+	@RequestMapping(value = "/takePhoto", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public JSONObject takePhoto(HttpSession session) {
+		return validateService.takePhoto(session);
+	}
+
+	@RequestMapping(value = "/editUser", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public JSONObject editUser(HttpSession session, HttpServletRequest request) {
+		return validateService.editUser(session, request);
 	}
 }

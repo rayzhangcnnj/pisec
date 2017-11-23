@@ -49,4 +49,6 @@ public interface TfBUserMapper {
     int updateByPrimaryKey(TfBUser record);
 
     int updateDrivingUser(TfBUser record);
+
+    TfBUser selectDrivingOvertime();
 }
