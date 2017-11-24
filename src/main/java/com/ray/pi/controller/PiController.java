@@ -110,4 +110,16 @@ public class PiController {
 	public JSONObject editUser(HttpSession session, HttpServletRequest request) {
 		return validateService.editUser(session, request);
 	}
+
+	@RequestMapping(value = "/question", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public JSONObject question() {
+		return validateService.playQuestion();
+	}
+
+	@RequestMapping(value = "/answer", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public JSONObject answer(HttpServletRequest request) {
+		return validateService.playAnswer(request);
+	}
 }

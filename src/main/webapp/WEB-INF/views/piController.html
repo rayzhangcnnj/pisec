@@ -61,10 +61,18 @@
     <div>
         <input type="button" onclick="takePhoto();" value="拍照"/>
     </div>
+
+    <div>===========================</div>
+
+    <div><h3></h3></div>
+    <div>
+        <input type="button" onclick="question();" value="模拟提醒"/>
+    </div>
+
     <div>===========================</div>
     <div>
-        <input id="trueButton" type="button" onclick=""/>
-        <input id="falseButton" type="button" onclick=""/>
+        <input id="trueButton" type="button" onclick="answer('1');"/>
+        <input id="falseButton" type="button" onclick="answer('0');"/>
     </div>
 </div>
 
@@ -235,6 +243,40 @@
                 if(data.resultCode=='error'){
                     alert(data.resultMsg);
                 }
+            },
+            error: function(data, status){
+                alert("error")
+            }
+        })
+    }
+
+    function question() {
+        $.ajax({
+            url: '/pisec/question',
+            type: 'post',
+            async: true,
+            data : {
+
+            },
+            dataType : 'json',
+            success: function(data, status) {
+            },
+            error: function(data, status){
+                alert("error")
+            }
+        })
+    }
+
+    function answer(flag) {
+        $.ajax({
+            url: '/pisec/answer',
+            type: 'post',
+            async: true,
+            data : {
+                flag: flag
+            },
+            dataType : 'json',
+            success: function(data, status) {
             },
             error: function(data, status){
                 alert("error")

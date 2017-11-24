@@ -324,7 +324,8 @@ public class ValidateServiceImpl implements ValidateService {
 		mp3.play();
 	}
 
-	public void playQuestion(){
+	public JSONObject playQuestion(){
+		JSONObject json = new JSONObject();
 		String questionPath = "/home/pi/apache-tomcat-7.0.82/webapps/";
 		String allPath = "/home/pi/apache-tomcat-7.0.82/webapps/speech/warningquestion.mp3";
 		File file = new File(allPath);
@@ -333,6 +334,33 @@ public class ValidateServiceImpl implements ValidateService {
 		}
 		MP3Player mp3 = new MP3Player(allPath);
 		mp3.play();
+		return json;
+	}
+
+	public JSONObject playAnswer(HttpServletRequest request) {
+		JSONObject json = new JSONObject();
+		String _flag = request.getParameter("flag");
+		String answerPath = "/home/pi/apache-tomcat-7.0.82/webapps/";
+		String allPathTrue = "/home/pi/apache-tomcat-7.0.82/webapps/speech/warningtrueanswer.mp3";
+		String allPathFalse = "/home/pi/apache-tomcat-7.0.82/webapps/speech/warningfalseanswer.mp3";
+		if (_flag!=null && !"".equals(_flag) && "1".equals(_flag)) {
+
+			File file = new File(allPathTrue);
+			if (!file.exists()) {
+				buildMp3File(answerPath, "好的，请继续保持专注", "trueanswer", "2");
+			}
+			MP3Player mp3 = new MP3Player(allPathTrue);
+			mp3.play();
+		} else if (_flag!=null && !"".equals(_flag) && "0".equals(_flag)) {
+			File file = new File(allPathFalse);
+			if (!file.exists()) {
+				buildMp3File(answerPath, "系统检测到当前驾驶状态不佳，请注意不要连续驾驶", "falseanswer", "2");
+			}
+			MP3Player mp3 = new MP3Player(allPathFalse);
+			mp3.play();
+		}
+
+		return json;
 	}
 
 //	public JSONObject getPath(){

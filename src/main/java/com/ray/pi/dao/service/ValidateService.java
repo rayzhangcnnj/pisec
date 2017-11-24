@@ -28,4 +28,8 @@ public interface ValidateService {
 	JSONObject takePhoto(HttpSession session);
 
 	void alcoholWarning();
+
+	JSONObject playQuestion();
+
+	JSONObject playAnswer(HttpServletRequest request);
 }
