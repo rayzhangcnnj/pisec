@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <object th:include="_includes/_meta :: headerFragment" th:remove="tag"/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="UTF-8"/>
+    <title>用户管理</title>
+    <style type="text/css">
+        body{padding: 0px}
+        html,body,table{background-color:#f5f5f5;width:100%;}
+        .form-signin{position:relative;text-align:left;width:450px;padding:25px 29px 29px;margin:auto;background-color:#fff;border:1px solid #e5e5e5;
+            -webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;-webkit-box-shadow:0 1px 2px rgba(0,0,0,.05);-moz-box-shadow:0 1px 2px rgba(0,0,0,.05);box-shadow:0 1px 2px rgba(0,0,0,.05);}
+        .form-signin .checkbox{margin-bottom:10px;color:#0663a2;} .form-signin .input-label{font-size:16px;line-height:23px;color:#999;}
+        .form-signin .input-block-level{font-size:16px;height:auto;margin-bottom:15px;padding:7px;*width:283px;*padding-bottom:0;_padding:7px 7px 9px 7px;}
+        .form-signin .btn.btn-large{font-size:16px;} .form-signin #themeSwitch{position:absolute;right:15px;bottom:10px;}
+        .form-signin div.validateCode {padding-bottom:15px;} .mid{vertical-align:middle;}
+        .header{height:80px;padding-top:20px;} .alert{position:relative;width:300px;margin:0 auto;*padding-bottom:0px;}
+        label.error{background:none;width:270px;font-weight:normal;color:inherit;margin:0;}
+    </style>
+</head>
+<body>
+<div class="wrap" style="margin-top: 100px;">
+    <form id="loginForm" class="form-signin" method="post">
+    <ul class="nav nav-tabs">
+        <li><a th:href="@{/toPiController}">控制首页</a></li>
+        <li class="active"><a th:href="@{#}">用户管理</a></li>
+    </ul>
+
+        <div class="p_title top">
+            <span class="ii">用户列表</span>
+        </div>
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>用户名</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                    <!--<td>测试用户</td>-->
+                    <!--<td>2017-11-28 12:23:09</td>-->
+                    <!--<td>-->
+                        <!--<a href="javascript:void(0);" onclick="deleteUser('1')">删除</a>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <tr th:each="user : ${userList}">
+                    <td th:text="${user.userName}">测试用户</td>
+                    <td th:text="${#dates.format(user.createTime,'yyyy-MM-dd HH:mm:ss')}">2017-11-28 12:23:09</td>
+                    <td>
+                        <!--<input type="button" value="编辑" th:onclick="'javascript:editUser(\''+${user.userId}+'\');'" />-->
+                        <!--<input type="button" value="删除" th:onclick="'javascript:deleteUser(\''+${user.userId}+'\');'" />-->
+                        <a href="javascript:void(0);" th:onclick="'javascript:deleteUser(\''+${user.userId}+'\');'" >删除</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+<script>
+    //<![CDATA[
+    
+    $(function () {
+        
+    });
+
+    function deleteUser(userId) {
+        $.jBox.confirm("确定要删除该用户吗",'提示',function(v,h,f){
+            //确定删除
+            if(v == 'ok'){
+                $.ajax({
+                    url: '/pisec/deleteUser',
+                    type: 'post',
+                    async: true,
+                    data : {
+                        userId : userId
+                    },
+                    dataType : 'json',
+                    success: function(data, status) {
+                        if(data.resultCode=='success'){
+                            $.jBox.tip(data.resultMsg,"success",{timeout:900});
+                            window.location.reload();
+                        }else{
+                            $.jBox.error("删除失败 ","失败");
+                        }
+                    },
+                    error: function(data, status){
+                        $.jBox.error("删除失败" ,"失败");
+                    }
+                })
+            }
+            return true;
+        });
+        return false;
+
+    }
+    
+    //]]>
+</script>
+</body>
+</html>

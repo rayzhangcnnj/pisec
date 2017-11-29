@@ -129,4 +129,19 @@ public class AipFaceClient {
 //		System.out.println(res.toString(2));
 		return res;
 	}
+
+	public JSONObject getGroupUsers(String group) {
+		HashMap<String, Object> options = new HashMap<String, Object>(2);
+		options.put("start", 0);
+		options.put("num", 100);
+		JSONObject res = client.getGroupUsers(group, options);
+		return res;
+	}
+
+//	public static void main(String[] args) {
+//		AipFaceClient client = new AipFaceClient();
+//		JSONObject res = client.getGroupUsers("pi");
+////		JSONObject res = client.deleteUser("uid_13","pi");
+//		System.out.println(res.toString(2));
+//	}
 }

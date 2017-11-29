@@ -2,6 +2,8 @@ package com.ray.pi.dao.persistence;
 
 import com.ray.pi.dao.entity.TfBUser;
 
+import java.util.List;
+
 /**
  * @ClassName: TfBUserMapper
 * @Description: tf_b_user表对应的dao操作Mapper映射类
@@ -51,4 +53,6 @@ public interface TfBUserMapper {
     int updateDrivingUser(TfBUser record);
 
     TfBUser selectDrivingOvertime();
+
+    List<TfBUser> selectUser();
 }

@@ -5,77 +5,81 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>UIP策略详情</title>
+
+    <style type="text/css">
+        body{padding: 0px}
+        html,body,table{background-color:#f5f5f5;width:100%;text-align:center;}.form-signin-heading{font-family:Helvetica, Georgia, Arial, sans-serif, 黑体;font-size:36px;margin-bottom:20px;color:#0663a2;}
+        .form-signin{position:relative;text-align:left;width:450px;padding:25px 29px 29px;margin:0 auto 20px;background-color:#fff;border:1px solid #e5e5e5;
+            -webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;-webkit-box-shadow:0 1px 2px rgba(0,0,0,.05);-moz-box-shadow:0 1px 2px rgba(0,0,0,.05);box-shadow:0 1px 2px rgba(0,0,0,.05);}
+        .form-signin .checkbox{margin-bottom:10px;color:#0663a2;} .form-signin .input-label{font-size:16px;line-height:23px;color:#999;}
+        .form-signin .input-block-level{font-size:16px;height:auto;margin-bottom:15px;padding:7px;*width:283px;*padding-bottom:0;_padding:7px 7px 9px 7px;}
+        .form-signin .btn.btn-large{font-size:16px;} .form-signin #themeSwitch{position:absolute;right:15px;bottom:10px;}
+        .form-signin div.validateCode {padding-bottom:15px;} .mid{vertical-align:middle;}
+        .header{height:80px;padding-top:20px;} .alert{position:relative;width:300px;margin:0 auto;*padding-bottom:0px;}
+        label.error{background:none;width:270px;font-weight:normal;color:inherit;margin:0;}
+    </style>
 </head>
 <body>
-<div>
-    <div><h3>LED灯控制</h3></div>
-    <div>
-        <input type="button" onclick="flash();" value="闪烁"/>
-    </div>
+<div class="wrap" style="margin-top: 100px;">
+    <form id="loginForm" class="form-signin" method="post">
+    <ul class="nav nav-tabs">
+        <li class="active"><a th:href="@{#}">控制首页</a></li>
+        <li><a th:href="@{/toUserList}">用户管理</a></li>
+    </ul>
+        <!--<div class="p_title top">-->
+            <!--<span class="ii">LED灯控制</span>-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<input class="btn" type="button" onclick="flash();" value="闪烁"/>-->
+        <!--</div>-->
+        <!--<br/>-->
 
-    <!--<div>===========================</div>-->
-
-    <!--<div><h3>LED灯控制2</h3></div>-->
-    <!--<div>-->
-        <!--<input type="button" onclick="flash2();" value="闪烁2"/>-->
-    <!--</div>-->
-
-    <div>===========================</div>
-
-    <div><h3>小车控制</h3></div>
-    <div>
-        <input type="button" onclick="turn('L');" value="左转"/>
-        <input type="button" onclick="turn('R');" value="右转"/>
-        <input type="button" onclick="turn('F');" value="向前"/>
-        <input type="button" onclick="turn('B');" value="向后"/>
-        <input type="button" onclick="turn('S');" value="停止"/>
-    </div>
-
-    <div>===========================</div>
-
-    <div><h3>用户注册</h3></div>
-    <div>
-        <input id="userName" placeholder="用户名"/>
-        <input type="button" onclick="addUser();" value="模拟注册"/>
-    </div>
-
-
-    <!--<div>===========================</div>-->
-
-    <!--<div><h3>用户修改</h3></div>-->
-    <!--<div>-->
-        <!--<input id="userName" placeholder="用户名"/>-->
-        <!--<input type="button" onclick="editUser();" value="测试修改"/>-->
-    <!--</div>-->
-
-    <div>===========================</div>
-
-    <div><h3>用户验证</h3></div>
-    <div>
-        <input type="button" onclick="validateUser();" value="模拟验证"/>
-    </div>
-
-    <div>===========================</div>
-
-    <div><h3>用户拍照</h3></div>
-    <div>
-        <input type="button" onclick="takePhoto();" value="拍照"/>
-    </div>
-
-    <div>===========================</div>
-
-    <div><h3></h3></div>
-    <div>
-        <input type="button" onclick="question();" value="模拟提醒"/>
-    </div>
-
-    <div>===========================</div>
-    <div>
-        <input id="trueButton" type="button" onclick="answer('1');"/>
-        <input id="falseButton" type="button" onclick="answer('0');"/>
-    </div>
+        <div class="p_title top">
+            <span class="ii">用户注册</span>
+        </div>
+        <div>
+            <input id="userName" placeholder="用户名"/>
+            <input class="btn" type="button" onclick="addUser();" value="模拟注册"/>
+        </div>
+        <br/>
+        <div class="p_title top">
+            <span class="ii">用户验证</span>
+        </div>
+        <div>
+            <input class="btn" type="button" onclick="validateUser();" value="模拟验证"/>
+        </div>
+        <br/>
+        <div class="p_title top">
+            <span class="ii">用户拍照</span>
+        </div>
+        <div>
+            <input class="btn" type="button" onclick="takePhoto();" value="拍照"/>
+        </div>
+        <br/>
+        <div class="p_title top">
+            <span class="ii">模拟提醒</span>
+        </div>
+        <div>
+            <input class="btn" type="button" onclick="question();" value="模拟提醒"/>
+        </div>
+        <br/>
+        <div class="p_title top">
+            <span class="ii">小车控制</span>
+        </div>
+        <div>
+            <input class="btn" type="button" onclick="turn('L');" value="左转"/>
+            <input class="btn" type="button" onclick="turn('R');" value="右转"/>
+            <input class="btn" type="button" onclick="turn('F');" value="向前"/>
+            <input class="btn" type="button" onclick="turn('B');" value="向后"/>
+            <input class="btn" type="button" onclick="turn('S');" value="停止"/>
+        </div>
+        <br/>
+        <div>
+            <input id="trueButton" type="button" onclick="answer('1');"/>
+            <input id="falseButton" type="button" onclick="answer('0');"/>
+        </div>
+    </form>
 </div>
-
 <script>
     //<![CDATA[
     $(function () {
@@ -270,6 +274,23 @@
     function answer(flag) {
         $.ajax({
             url: '/pisec/answer',
+            type: 'post',
+            async: true,
+            data : {
+                flag: flag
+            },
+            dataType : 'json',
+            success: function(data, status) {
+            },
+            error: function(data, status){
+                alert("error")
+            }
+        })
+    }
+
+    function toUserList() {
+        $.ajax({
+            url: '/pisec/toUserList',
             type: 'post',
             async: true,
             data : {

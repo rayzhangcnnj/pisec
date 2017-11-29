@@ -124,4 +124,9 @@
       where drive_state = '1'
       and DATE_ADD(last_drive_start_time,INTERVAL 2 hour) &lt; CURRENT_TIME()
   </select>
+  <select id="selectUser" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tf_b_user
+  </select>
 </mapper>

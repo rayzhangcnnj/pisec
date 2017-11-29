@@ -5,6 +5,7 @@ import com.ray.pi.dao.entity.TfBUser;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by Ray on 2017/10/24.
@@ -32,4 +33,10 @@ public interface ValidateService {
 	JSONObject playQuestion();
 
 	JSONObject playAnswer(HttpServletRequest request);
+
+	List<TfBUser> queryUserList();
+
+	JSONObject cleanGroupUser(String group);
+
+	JSONObject deleteUser(HttpServletRequest request);
 }

@@ -2,11 +2,13 @@ package com.ray.pi.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
+import com.ray.pi.dao.entity.TfBUser;
 import com.ray.pi.dao.service.ValidateService;
 import com.ray.pi.gpio.CarUtil;
 import com.ray.pi.gpio.GpioUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,6 +33,19 @@ public class PiController {
 	@RequestMapping("/toPiController")
 	public String toPiController() {
 		return "piController";
+	}
+
+	@RequestMapping("/toUserList")
+	public String toUserList(HttpServletRequest request, Model model){
+		List<TfBUser> userList = validateService.queryUserList();
+		model.addAttribute("userList", userList);
+		return "userList";
+	}
+
+	@RequestMapping(value = "/deleteUser", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public JSONObject deleteUser(HttpServletRequest request) {
+		return validateService.deleteUser(request);
 	}
 
 	@RequestMapping(value = "/testGpio", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})

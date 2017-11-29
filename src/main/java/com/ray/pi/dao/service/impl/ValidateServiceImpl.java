@@ -23,6 +23,7 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -363,17 +364,39 @@ public class ValidateServiceImpl implements ValidateService {
 		return json;
 	}
 
-//	public JSONObject getPath(){
-//		JSONObject json = new JSONObject();
-//
-//		json.put("path", templatesPath);
-//		return json;
-//	}
+	@Override
+	public List<TfBUser> queryUserList() {
+		return userMapper.selectUser();
+	}
 
-//	public static void main(String[] args) {
-//		String path = "/Users/zhangrui/Documents/maven/maven-repository/com/ray/pisec/";
-//		path.substring(0,path.indexOf("pisec/"));
-//		System.out.println(path);
-//	}
+	public JSONObject cleanGroupUser(String group) {
+		return null;
+	}
+
+	@Override
+	public JSONObject deleteUser(HttpServletRequest request){
+		JSONObject json = new JSONObject();
+		try {
+			String userId = request.getParameter("userId");
+			String uid = "uid_" + userId;
+			AipFaceClient client = new AipFaceClient();
+			org.json.JSONObject res = client.deleteUser(uid, "pi");
+			if (res.has("error_code")) {
+				json.put("resultCode", "error");
+				json.put("resultMsg", "用户删除失败，请重新尝试");
+				return json;
+			}
+			userMapper.deleteByPrimaryKey(Long.parseLong(userId));
+		} catch (Exception e) {
+			e.printStackTrace();
+			json.put("resultCode", "error");
+			json.put("resultMsg", "用户删除失败，请重新尝试");
+			return json;
+		}
+		json.put("resultCode", "success");
+		json.put("resultMsg", "用户删除成功");
+		return json;
+	}
+
 
 }
